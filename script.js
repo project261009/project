@@ -1,6 +1,6 @@
 const CONFIG = {
     mainQuestion: "Happy Birthday kesayangan akuuu",
-    subQuestion: "kamu gaakan bisa klik no and klik music di pojok kanan atas duluu🎂",
+    subQuestion: "kamu gaakan bisa klik no 🎂",
     yesButton: "YES",
     noButton: "NO",
     noEscapeTexts: ["Hehe, nggak bisa 😝", "Coba lagi 😜", "Aku anggap YES ya! 🎉"],
@@ -358,33 +358,27 @@ function initMouseTrail() {
         setTimeout(() => heart.remove(), 1000);
     });
 }
-    function toggleMusic() {
-      const audio = document.getElementById('bgMusic');
-      const icon = document.getElementById('musicIcon');
+function toggleMusic() {
+    const audio = document.getElementById('bgMusic');
+    const icon = document.getElementById('musicIcon');
 
-      if (audio.paused) {
+    if (audio.paused) {
         audio.muted = false; // buka mute kalau autoplay muted
         audio.play().then(() => {
-          icon.textContent = "⏸️";
+            icon.textContent = "🎵"; // ikon berubah jadi pause
         }).catch(err => {
-          console.error("Audio gagal diputar:", err);
+            console.error("Audio gagal diputar:", err);
         });
-      } else {
-        audio.pause();
-        icon.textContent = "🎵";
-      }
+    } else {
+        audio.pause(); // ini yang bikin musik berhenti
+        icon.textContent = "🎵"; // ikon kembali ke play
     }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     applyConfig();
     initEventListeners();
     createSparkles();
     new ParticleSystem();
     initMouseTrail();
-
-    // buka mute setelah halaman siap
-    const audio = document.getElementById('bgMusic');
-    audio.muted = false;
-    audio.play().catch(err => {
-        console.log("Autoplay gagal:", err);
-    });
 });
