@@ -380,4 +380,11 @@ document.addEventListener('DOMContentLoaded', () => {
     createSparkles();
     new ParticleSystem();
     initMouseTrail();
+
+    // buka mute setelah halaman siap
+    const audio = document.getElementById('bgMusic');
+    audio.muted = false;
+    audio.play().catch(err => {
+        console.log("Autoplay gagal:", err);
+    });
 });
