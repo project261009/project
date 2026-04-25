@@ -358,23 +358,6 @@ function initMouseTrail() {
         setTimeout(() => heart.remove(), 1000);
     });
 }
-function toggleMusic() {
-    const audio = document.getElementById('bgMusic');
-    const icon = document.getElementById('musicIcon');
-
-    if (audio.paused) {
-        audio.muted = false; // buka mute kalau autoplay muted
-        audio.play().then(() => {
-            icon.textContent = "🎵"; // ikon berubah jadi pause
-        }).catch(err => {
-            console.error("Audio gagal diputar:", err);
-        });
-    } else {
-        audio.pause(); // ini yang bikin musik berhenti
-        icon.textContent = "🎵"; // ikon kembali ke play
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     applyConfig();
     initEventListeners();
